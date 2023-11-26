@@ -1,17 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-from time import process_time
 import csv
 
-class Trigonometric:
+class Trigonometry:
     def __init__(self, file_path = '') -> None:
         self.file_path = file_path
 
         if self.file_path:
             self.initialise(self.file_path)
         else:
-            self.generate()
+            self.generate(int(input('Enter size of dataset (default 30): ')))
 
 
     def sin(self):
@@ -25,6 +24,9 @@ class Trigonometric:
         ax.set_title('Sin function')
         ax.set_xlabel('Values')
         ax.set_ylabel('Sin values')
+        
+        if len(data) <= 30:
+            plt.scatter(data, values, color='red', marker='o', s=10)
 
         plt.title('Sin function')
 
@@ -43,6 +45,9 @@ class Trigonometric:
         ax.set_xlabel('Values')
         ax.set_ylabel('Cos values')
 
+        if len(data) <= 30:
+            plt.scatter(data, values, color='red', marker='o', s=10)
+
         plt.title('Cos function')
 
         plt.savefig('figures/cos_function.png', format='png', dpi=300)
@@ -60,6 +65,9 @@ class Trigonometric:
         ax.set_xlabel('Values')
         ax.set_ylabel('Tan values')
 
+        if len(data) <= 30:
+            plt.scatter(data, values, color='red', marker='o', s=10)
+
         plt.title('Tan function')
 
         plt.savefig('figures/tan_function.png', format='png', dpi=300)
@@ -76,6 +84,9 @@ class Trigonometric:
         ax.set_title('Arctan function')
         ax.set_xlabel('Values')
         ax.set_ylabel('Arctan values')
+    
+        if len(data) <= 30:
+            plt.scatter(data, values, color='red', marker='o', s=10)
 
         plt.title('Arctan function')
 
@@ -94,6 +105,9 @@ class Trigonometric:
         ax.set_title('Arcsin function')
         ax.set_xlabel('Values')
         ax.set_ylabel('Arcsin values')
+    
+        if len(data) <= 30:
+            plt.scatter(data, values, color='red', marker='o', s=10)
 
         plt.title('Arcsin function')
 
@@ -112,9 +126,21 @@ class Trigonometric:
         ax.set_xlabel('Values')
         ax.set_ylabel('Arccos values')
 
+        if len(data) <= 30:
+            plt.scatter(data, values, color='red', marker='o', s=10)
+
         plt.title('Arccos function')
 
         plt.savefig('figures/arccos_function.png', format='png', dpi=300)
+
+
+    def all(self):
+        self.sin()
+        self.cos()
+        self.tan()
+        self.arcsin()
+        self.arccos()
+        self.arctan()
 
 
     def display(self):
@@ -137,24 +163,6 @@ class Trigonometric:
 
         self.data = np.radians(self.data)
 
-        
-
-    
-
-
 
 if __name__ == '__main__':
-    start = process_time()
-
-    functions = Trigonometric()
-
-    functions.sin()
-    functions.cos()
-    functions.tan()
-    functions.arctan()
-    functions.arcsin()
-    functions.arccos()
-
-    end = process_time()
-
-    print(f'Time taken: {end - start}')
+    print('This file is not meant to be run directly. Please run main.py instead.')
